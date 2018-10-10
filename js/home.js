@@ -8,12 +8,6 @@ console.log(products);
 const content = document.getElementById('content');
 const categorias = document.getElementById('categorias');
 
-
-var producto_valor = products.products.map(producto);
-console.log(producto_valor.price.sort(function (a, b){
-    return a - b;
-}))
-
 function imprimir (product){
   const productsPrint = `
     <div class="content-item">
