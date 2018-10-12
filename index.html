@@ -33,10 +33,11 @@
 
   <section class="navigate-body">
     <div class="filteres">
-      <button class="filter one">Disponibles</button>
-      <button class="filter two">De $ 0 a $ 5000 COP</button>
-      <button class="filter three">De $5000 a $19000 COP</button>
-      <button class="filter four">Cantidad en stock</button>
+      <button class="filter four" id="filterStockQuantity" >Cantidad en stock</button>
+      <button class="filter one"id="availableButton">Disponibles</button>
+      <button class="filter five" id="orderButton">Ordenar Precio</button>
+      <button class="filter two" id="filterPriceLessButton">De $ 0 a $ 5000 COP</button>
+      <button class="filter three" id="filterPriceMoreButton">De $5000 a $19000 COP</button>
     </div>
     <div class="content contenedor" >
       <div class="content-list" id="content">
@@ -59,8 +60,6 @@
       </div>
     </div>
   </footer>
-
-  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
   <script src="js/home.js" type="module" ></script>
 </body>
 </html>

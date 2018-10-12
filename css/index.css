@@ -113,6 +113,9 @@ body {
 .four {
   background: linear-gradient(to right, #ae40c4,#824dcc);
 }
+.five {
+  background: linear-gradient(to right, #3991f6, #028b8e);
+}
 .navigate-left {
   border:1px solid #d8d4db;
   border-radius: 3px;
@@ -176,10 +179,11 @@ body {
 }
 .content-item button {
   color: white;
-  background-image: linear-gradient(to bottom right, #fcf52d, #fc8814,#f91368);
+  background-image: linear-gradient(to bottom right, #fcb900, #fa5f22,#f91368);
   border:none;
   padding: 5px 25px;
   border-radius: 20px;
+  cursor:pointer;
 }
 .footer {
   background-color: #2d527f;
