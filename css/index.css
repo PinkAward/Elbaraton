@@ -39,7 +39,6 @@
 .icon-facebook2:before {
   content: "\e907";
 }
-
 body {
   margin: 0;
 }
@@ -57,17 +56,13 @@ body {
 }
 .banner-right {
   display: flex;
+  list-style: none;
   font-family: 'Hi Melody', cursive;
 }
 .banner-right li {
   display: flex;
   padding: 0 25px;
-}
-.banner-right a {
-  display: flex;
   color: white;
-  text-decoration: none;
-  list-style: none;
   align-items: center;
   font-size: 25px;
 }
@@ -87,6 +82,37 @@ body {
   padding: 10px;
   font-family: 'arial';
   position: relative;
+}
+.buy-notify {
+  position: relative;
+}
+.icon-shopping-cart {
+  position: relative;
+}
+.buy-notify:after {
+  font-family: 'arial';
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  content: attr(data-count);
+	font-size: 11px;
+  font-weight: bold;
+  min-width: 18px;
+  height: 18px;
+  background: #ff4600;
+  border-radius: 50%;
+  top:22px;
+  right:10px;
+  opacity: 0;
+  position: absolute;
+  transition: .3s;
+  transform: scale(.5);
+  will-change:opacity transform;
+}
+.buy-notify.show-count:after {
+  opacity: 1;
+  transform: scale(1);
 }
 .filteres {
   display: flex;
@@ -158,12 +184,92 @@ body {
 }
 .content-item {
   font-family: 'arial';
-  margin:5px 10px;
+  margin: 5px 10px;
   padding: 10px;
   max-width: 180px;
   border: 1px solid #d8d4db;
   border-radius: 8px;
   text-align: center;
+}
+.info-compra {
+  /* display: none; */
+  padding: 25px;
+  text-align: left;
+  border-bottom: 1px solid #d8d4db; 
+  font-family: 'arial';
+}
+.listb {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  width: inherit;
+  height: 300px;
+}
+.bloquesCompra li {
+  width: inherit;
+  height: 30px;
+  display:flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #d8d4db;
+  flex-shrink: 0;
+  align-items: center;
+}
+.bloquesCompra p {
+  margin:0;
+  justify-content: right;
+}
+.bloquesCompra {
+  /* display: flex;
+  flex-direction: row; */
+  position: relative;
+  font-family: 'arial';
+  text-align: center;
+  list-style: none;
+  padding: 15px;
+}
+.add {
+  padding: 5px 10px;
+  background-color: #2D527F;
+  margin:5px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  min-width: 29px;
+}
+.bloquesPago li {
+  display:flex;
+  justify-content:space-between;
+  padding: 0 40px;
+}
+.bloquesPago {
+  font-family: 'arial';
+  text-align: center;
+  list-style: none;
+}
+.info-compra h3 {
+  font-size: 25px;
+  margin: 0;
+}
+.info-compra p {
+  margin: 5px 0;
+}
+.content-item-bought {
+  font-family: 'arial';
+  margin:5px 10px;
+  padding: 20px;
+  width: 100%;
+  border: 1px solid #d8d4db;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.content-item-bought h3{
+  margin: 0;
+}
+.content-item-bought p{
+  margin: 0;
 }
 .precio {
   display: flex;
@@ -181,10 +287,24 @@ body {
   color: white;
   background-image: linear-gradient(to bottom right, #fcb900, #fa5f22,#f91368);
   border:none;
-  padding: 5px 25px;
+  padding: 8px 35px;
   border-radius: 20px;
   cursor:pointer;
-}
+  overflow:hidden;
+  position: relative;
+} 
+.content-item button:before {
+  font-family: 'icomoon' !important;
+  content:"\e902";
+  color:white;
+  position: absolute;
+  top: 10px;
+  left: -15px;
+  transition: all 200ms ease;
+  }
+.content-item button:hover:before {
+  left: 10px;
+  }
 .footer {
   background-color: #2d527f;
 }
@@ -216,4 +336,46 @@ body {
   text-decoration: none;
   color: white;
   padding: 5px 20px;
+}
+.comprar-container {
+  font-family: 'arial';
+  border: 1px solid #d8d4db;
+  border-radius: 8px 0 0 8px;
+  min-width: 400px;
+  height: 100vh;
+  text-align: center;
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: white;
+  transition: 1s;
+  z-index: 2;
+}
+.buttonCarrito {
+  border:none;
+  font-weight: bold;
+  cursor: pointer;
+  background-color:#2D527F;
+  padding: 8px 50px;
+  border-radius: 15px;
+  color: white;
+  font-size: 15px;
+  letter-spacing: 1.2px;
+  margin: 10px;
+}
+.buttonCarrito:hover {
+  background-color:#053087;
+}
+.close-modal {
+  position: absolute;
+  top:5px;
+  right:5px;
+  font-weight: bold;
+  padding: 2px 4px;
+  background-color:rgba(112, 108, 108,.6);
+  color:black;
+  font-size: 12px;
+  border-radius: 50%;
+  cursor: pointer;
 }

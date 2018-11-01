@@ -9,7 +9,7 @@ function printProduct (product){
       <p> Cantidad: ${product.quantity}<br>
           Disponible: ${booleantoString}<br>
           SN: ${product.sublevel_id}</p>
-      <button>Comprar</button>
+      <button data-id="${product.id}" id="buttonBuy">Agregar</button>
     </div>
   `;
   content.insertAdjacentHTML('beforeEnd', productsPrint);

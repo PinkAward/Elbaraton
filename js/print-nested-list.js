@@ -3,7 +3,7 @@ function imprimircat (categoria, element){
     <ol>
       <ul>
         <li>
-        <input type="checkbox">${categoria.name}
+        ${categoria.name}
         </li>
       </ul>
     </ol>

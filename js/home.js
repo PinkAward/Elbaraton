@@ -7,13 +7,20 @@ import disponible from './disponible.js';
 import pricesMore from './filter-Price-More.js';
 import pricesLess from './filter-price-Less.js';
 import stockOrdenador from './stock-ordenador.js';
+import printModal from './print-modal.js';
+import scrollNestedList from './scroll-nested-list.js';
 
 console.log('Hola mundo');
 console.log(categories);
 console.log(products);
 
 const content = document.getElementById('content');
+const cartFixed = document.getElementById('cart-fixed');
 const categorias = document.getElementById('categorias');
+
+document.addEventListener("scroll", function(){
+  scrollNestedList();
+});
 
 function renderProducts (products){
   products.forEach((product)=>{
@@ -25,7 +32,6 @@ function order (){
   content.innerHTML="";
   renderProducts(orderedProducts);
 }
-renderProducts(products.products);
 const orderButton = document.getElementById('orderButton');
 orderButton.addEventListener('click', order)
 
@@ -61,25 +67,36 @@ function disponibles (){
 const availableButton = document.getElementById('availableButton');
 availableButton.addEventListener('click', disponibles)
 
-categories.categories.forEach((categoria)=> {
+renderProducts(products.products);
+
+categories.categories.map((categoria)=> {
   printNestedList(categoria, categorias);
+  console.log(categoria)
 })
 
-const navigateLeft = document.getElementById('navigateLeft');
-const footer = document.getElementById('footer');
+const buttonBuy = document.querySelectorAll('#buttonBuy');
+const buy = document.getElementById('buy-open-modal');
 
-function checkOffset() {
-  function getRectTop(el){
-    var rect = el.getBoundingClientRect();
-    return rect.top;
+buttonBuy.forEach((clicked)=>{
+  clicked.addEventListener('click',addToCart )
+})
+  buy.addEventListener('click', mostrarModal)
+
+function mostrarModal (){
+  printModal(cart, cartFixed);
+}
+function addToCart(){
+  const id = this.dataset.id;
+  const productBought  = addProduct(id, products.products);
+  buy.setAttribute('data-count', productBought.length);
+  buy.classList.add('show-count');
+  buy.classList.add('buy-notify');
+}
+const cart = [];
+function addProduct(id, products ){
+  const product = products.find(product => product.id === id);
+  cart.push(product);
+  console.log(cart);
+  return cart;
   }
 
-  if((getRectTop(navigateLeft) + document.body.scrollTop) + navigateLeft.offsetHeight >= (getRectTop(footer) + document.body.scrollTop) - 10)
-    navigateLeft.style.position = 'absolute';
-  if(document.body.scrollTop + window.innerHeight < (getRectTop(footer) + document.body.scrollTop))
-    navigateLeft.style.position = 'fixed';
-}
-
-document.addEventListener("scroll", function(){
-  checkOffset();
-});
